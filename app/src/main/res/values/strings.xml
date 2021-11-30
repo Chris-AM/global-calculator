@@ -1,0 +1,28 @@
+<resources>
+    <string name="app_name">Calculadora Ohm Imc EcCuad</string>
+    <string name="navigation_drawer_open">Open navigation drawer</string>
+    <string name="navigation_drawer_close">Close navigation drawer</string>
+    <string name="nav_header_title">Culculadora Específica</string>
+    <string name="nav_header_subtitle">android.studio@android.com</string>
+    <string name="nav_header_desc">Navigation header</string>
+    <string name="action_settings">Settings</string>
+
+    <string name="menu_home">Home</string>
+    <string name="menu_cuadEcuation">Calculadora de Ecuaciones Cuadráticas</string>
+    <string name="menu_ohmLaw">Calculadora de ley de Ohm</string>
+    <string name="menu_bmi">Calculadora IMC</string>
+
+    <!-- bmi view -->.
+    <string name="hint_weight_input">Ingrese el peso</string>
+    <string name="hint_height_input">Ingrese la altura en metros (m.cc)</string>
+    <string name="hint_result">Resultado</string>
+
+    <!-- ohm's law -->
+    <string name="hint_voltage_input">Voltaje</string>
+    <string name="hint_resistance_input">Resistencia</string>
+    <string name="hint_current_input">Corriente</string>
+    <string name="hint_power_input">Potencia</string>
+
+    <string name="btn_global_calculate">Calular</string>
+    <color name="bckg_header_title">#b56cf5</color>
+</resources>
