@@ -33,7 +33,7 @@ import java.util.List;
 public class OhmsLawFragment extends Fragment {
 
     private FragmentOhmslawBinding binding;
-    Double voltage, current, resistance, power;
+    Double voltage, current, resistance, power, result, convertedResult;
     String option;
 
     public View onCreateView(@NonNull LayoutInflater inflater,
@@ -134,16 +134,16 @@ public class OhmsLawFragment extends Fragment {
                 String convertedR = resistanceInput.getText().toString();
                 String convertedI = currentInput.getText().toString();
                 String convertedV = voltageInput.getText().toString();
-
+                AlertDialog.Builder builder = new AlertDialog.Builder(getContext());
                 switch(option){
                     case "Voltaje":
                         resistance = Double.parseDouble(convertedR);
                         current = Double.parseDouble(convertedI);
-                        voltage = voltageCalc(current, resistance);
-                        Double convertedVoltage = Math.round(voltage * 100.0)/100.0;
-                        AlertDialog.Builder builder = new AlertDialog.Builder(getContext());
+                        
+                        result = voltageCalc(current, resistance);
+                        convertedResult = Math.round(result * 100.0)/100.0;
                         builder.setTitle("Resultado");
-                        builder.setMessage("El voltaje es: " + convertedVoltage + " volt");
+                        builder.setMessage("El voltaje es: " + convertedResult + " volt");
                         builder.setPositiveButton("OK", new DialogInterface.OnClickListener() {
                             @Override
                             public void onClick(DialogInterface dialog, int which) {
@@ -157,32 +157,30 @@ public class OhmsLawFragment extends Fragment {
                         current = Double.parseDouble(convertedI);
                         resistance = resistanceCalc(voltage, current);
                         Double convertedResistance = Math.round(resistance * 100.0)/100.0;
-                        AlertDialog.Builder builder2 = new AlertDialog.Builder(getContext());
-                        builder2.setTitle("Resultado");
-                        builder2.setMessage("La resistencia es: " + convertedResistance + " ohm");
-                        builder2.setPositiveButton("OK", new DialogInterface.OnClickListener() {
+                        builder.setTitle("Resultado");
+                        builder.setMessage("La resistencia es: " + convertedResistance + " ohm");
+                        builder.setPositiveButton("OK", new DialogInterface.OnClickListener() {
                             @Override
                             public void onClick(DialogInterface dialog, int which) {
                                 dialog.dismiss();
                             }
                         });
-                        builder2.show();
+                        builder.show();
                         break;
                     case "Corriente":
                         voltage = Double.parseDouble(convertedV);
                         resistance = Double.parseDouble(convertedR);
                         current = currentCalc(voltage, resistance);
                         Double convertedCurrent = Math.round(current * 100.0)/100.0;
-                        AlertDialog.Builder builder3 = new AlertDialog.Builder(getContext());
-                        builder3.setTitle("Resultado");
-                        builder3.setMessage("La corriente es: " + convertedCurrent + " ampere");
-                        builder3.setPositiveButton("OK", new DialogInterface.OnClickListener() {
+                        builder.setTitle("Resultado");
+                        builder.setMessage("La corriente es: " + convertedCurrent + " ampere");
+                        builder.setPositiveButton("OK", new DialogInterface.OnClickListener() {
                             @Override
                             public void onClick(DialogInterface dialog, int which) {
                                 dialog.dismiss();
                             }
                         });
-                        builder3.show();
+                        builder.show();
                         break;
                 }// end switch
             }
