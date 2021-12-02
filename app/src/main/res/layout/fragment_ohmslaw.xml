@@ -6,17 +6,6 @@
     android:layout_height="match_parent"
     tools:context=".ui.ohmslaw.OhmsLawFragment">
 
-    <Spinner
-        android:id="@+id/spinner_ohmslaw"
-        android:layout_width="326dp"
-        android:layout_height="60dp"
-        app:layout_constraintBottom_toTopOf="@+id/txt_voltage_input"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.505"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.794" />
-
     <EditText
         android:id="@+id/txt_voltage_input"
         android:layout_width="326dp"
@@ -27,25 +16,22 @@
         android:inputType="numberDecimal"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.505"
+        app:layout_constraintHorizontal_bias="0.494"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.35" />
+        app:layout_constraintVertical_bias="0.438" />
 
-    <EditText
-        android:id="@+id/txt_current_input"
-        android:layout_width="326dp"
-        android:layout_height="60dp"
-        android:digits="0123456789.,"
-        android:ems="10"
-        android:hint="@string/hint_current_input"
-        android:inputType="numberDecimal"
+    <Button
+        android:id="@+id/btn_calc_ohmslaw"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/btn_global_calculate"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.505"
+        app:layout_constraintHorizontal_bias="0.498"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.602" />
+        app:layout_constraintVertical_bias="0.875" />
 
     <EditText
         android:id="@+id/txt_resistance_input"
@@ -57,21 +43,47 @@
         android:inputType="numberDecimal"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.505"
+        app:layout_constraintHorizontal_bias="0.494"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.478" />
+        app:layout_constraintVertical_bias="0.566" />
 
-    <Button
-        android:id="@+id/btn_calc_ohmslaw"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="@string/btn_global_calculate"
+    <Spinner
+        android:id="@+id/spinner_ohmslaw"
+        android:layout_width="326dp"
+        android:layout_height="60dp"
+        app:layout_constraintBottom_toTopOf="@+id/txt_voltage_input"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.494"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.846" />
+
+    <ImageView
+        android:id="@+id/img_ohms_law"
+        android:layout_width="190dp"
+        android:layout_height="138dp"
+        android:src="@drawable/omhslaw"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.789" />
+        app:layout_constraintVertical_bias="0.062" />
+
+    <EditText
+        android:id="@+id/txt_current_input"
+        android:layout_width="326dp"
+        android:layout_height="60dp"
+        android:digits="0123456789.,"
+        android:ems="10"
+        android:hint="@string/hint_current_input"
+        android:inputType="numberDecimal"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.494"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.69" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
