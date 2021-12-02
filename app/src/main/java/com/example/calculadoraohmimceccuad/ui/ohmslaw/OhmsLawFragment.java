@@ -163,17 +163,21 @@ public class OhmsLawFragment extends Fragment {
                         try {
                             voltage = Double.parseDouble(convertedV);
                             current = Double.parseDouble(convertedI);
-                            resistance = resistanceCalc(voltage, current);
-                            Double convertedResistance = Math.round(resistance * 100.0) / 100.0;
-                            builder.setTitle("Resultado");
-                            builder.setMessage("La resistencia es: " + convertedResistance + " ohm");
-                            builder.setPositiveButton("OK", new DialogInterface.OnClickListener() {
-                                @Override
-                                public void onClick(DialogInterface dialog, int which) {
-                                    dialog.dismiss();
-                                }
-                            });
-                            builder.show();
+                            if(current == 0){
+                                resCurrError();
+                            }else {
+                                resistance = resistanceCalc(voltage, current);
+                                Double convertedResistance = Math.round(resistance * 100.0) / 100.0;
+                                builder.setTitle("Resultado");
+                                builder.setMessage("La resistencia es: " + convertedResistance + " ohm");
+                                builder.setPositiveButton("OK", new DialogInterface.OnClickListener() {
+                                    @Override
+                                    public void onClick(DialogInterface dialog, int which) {
+                                        dialog.dismiss();
+                                    }
+                                });
+                                builder.show();
+                            }
                         } catch (Exception e) {
                             catchError();
                         }
@@ -182,17 +186,21 @@ public class OhmsLawFragment extends Fragment {
                         try {
                             voltage = Double.parseDouble(convertedV);
                             resistance = Double.parseDouble(convertedR);
-                            current = currentCalc(voltage, resistance);
-                            Double convertedCurrent = Math.round(current * 100.0) / 100.0;
-                            builder.setTitle("Resultado");
-                            builder.setMessage("La corriente es: " + convertedCurrent + " ampere");
-                            builder.setPositiveButton("OK", new DialogInterface.OnClickListener() {
-                                @Override
-                                public void onClick(DialogInterface dialog, int which) {
-                                    dialog.dismiss();
-                                }
-                            });
-                            builder.show(); 
+                            if(resistance == 0){
+                                resCurrError();
+                            }else {
+                                current = currentCalc(voltage, resistance);
+                                Double convertedCurrent = Math.round(current * 100.0) / 100.0;
+                                builder.setTitle("Resultado");
+                                builder.setMessage("La corriente es: " + convertedCurrent + " ampere");
+                                builder.setPositiveButton("OK", new DialogInterface.OnClickListener() {
+                                    @Override
+                                    public void onClick(DialogInterface dialog, int which) {
+                                        dialog.dismiss();
+                                    }
+                                });
+                                builder.show();
+                            }
                         } catch (Exception e) {
                             catchError();
                         }
@@ -245,6 +253,19 @@ public class OhmsLawFragment extends Fragment {
         AlertDialog.Builder error = new AlertDialog.Builder(getContext());
         error.setTitle("Error");
         error.setMessage("Todos los valores deben ser ingresados según se explican en la Ley de Ohm");
+        error.setNegativeButton("Entendido", new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialog, int which) {
+                dialog.dismiss();
+            }
+        });
+        error.show();
+    }
+
+    private void resCurrError () {
+        AlertDialog.Builder error = new AlertDialog.Builder(getContext());
+        error.setTitle("Error");
+        error.setMessage("Los valores de resistencia (r) y corriente (i) deben ser distintos de 0");
         error.setNegativeButton("Entendido", new DialogInterface.OnClickListener() {
             @Override
             public void onClick(DialogInterface dialog, int which) {
