@@ -147,7 +147,8 @@ public class OhmsLawFragment extends Fragment {
                             result = voltageCalc(current, resistance);
                             convertedResult = Math.round(result * 100.0) / 100.0;
                             builder.setTitle("Resultado");
-                            builder.setMessage("El voltaje es: " + convertedResult + " volt");
+                            builder.setMessage("El voltaje es: " + convertedResult + " volt \n"
+                                    + "La potencia es : " + powerCalc(0) + "W");
                             builder.setPositiveButton("OK", new DialogInterface.OnClickListener() {
                                 @Override
                                 public void onClick(DialogInterface dialog, int which) {
@@ -163,13 +164,14 @@ public class OhmsLawFragment extends Fragment {
                         try {
                             voltage = Double.parseDouble(convertedV);
                             current = Double.parseDouble(convertedI);
-                            if(current == 0){
+                            if (current == 0) {
                                 resCurrError();
-                            }else {
+                            } else {
                                 resistance = resistanceCalc(voltage, current);
                                 Double convertedResistance = Math.round(resistance * 100.0) / 100.0;
                                 builder.setTitle("Resultado");
-                                builder.setMessage("La resistencia es: " + convertedResistance + " ohm");
+                                builder.setMessage("La resistencia es: " + convertedResistance + " ohm \n"
+                                        + "La potencia es : " + powerCalc(1) + "W");
                                 builder.setPositiveButton("OK", new DialogInterface.OnClickListener() {
                                     @Override
                                     public void onClick(DialogInterface dialog, int which) {
@@ -186,13 +188,14 @@ public class OhmsLawFragment extends Fragment {
                         try {
                             voltage = Double.parseDouble(convertedV);
                             resistance = Double.parseDouble(convertedR);
-                            if(resistance == 0){
+                            if (resistance == 0) {
                                 resCurrError();
-                            }else {
+                            } else {
                                 current = currentCalc(voltage, resistance);
                                 Double convertedCurrent = Math.round(current * 100.0) / 100.0;
                                 builder.setTitle("Resultado");
-                                builder.setMessage("La corriente es: " + convertedCurrent + " ampere");
+                                builder.setMessage("La corriente es: " + convertedCurrent + " ampere \n"
+                                        + "La potencia es : " + powerCalc(2) + "W");
                                 builder.setPositiveButton("OK", new DialogInterface.OnClickListener() {
                                     @Override
                                     public void onClick(DialogInterface dialog, int which) {
@@ -262,7 +265,7 @@ public class OhmsLawFragment extends Fragment {
         error.show();
     }
 
-    private void resCurrError () {
+    private void resCurrError() {
         AlertDialog.Builder error = new AlertDialog.Builder(getContext());
         error.setTitle("Error");
         error.setMessage("Los valores de resistencia (r) y corriente (i) deben ser distintos de 0");
