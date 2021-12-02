@@ -69,6 +69,7 @@ public class OhmsLawFragment extends Fragment {
                     return true;
                 }
             }
+
             @Override
             public View getDropDownView(int position, View convertView,
                                         ViewGroup parent) {
@@ -78,7 +79,7 @@ public class OhmsLawFragment extends Fragment {
                     // Set the hint text color gray
                     tv.setTextColor(Color.GRAY);
                 } else {
-                    tv.setTextColor(Color.rgb(128,24,248));
+                    tv.setTextColor(Color.rgb(128, 24, 248));
                 }
 
                 return view;
@@ -93,30 +94,30 @@ public class OhmsLawFragment extends Fragment {
             @Override
             public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
                 String selectedItemText = (String) parent.getItemAtPosition(position);
-                if(position > 0 ){
+                if (position > 0) {
                     Toast.makeText(
-                            getContext(),"Haz Elegido: " + selectedItemText, Toast.LENGTH_SHORT
+                            getContext(), "Haz Elegido: " + selectedItemText, Toast.LENGTH_SHORT
                     ).show();
                 }
                 option = selectedItemText;
 
-                if(option.equals("Seleccione una opción")){
+                if (option.equals("Seleccione una opción")) {
                     voltageInput.setInputType(InputType.TYPE_NULL);
                     resistanceInput.setInputType(InputType.TYPE_NULL);
                     currentInput.setInputType(InputType.TYPE_NULL);
-                }else if(option.equals("Voltaje")){
+                } else if (option.equals("Voltaje")) {
                     voltageInput.setVisibility(View.GONE);
                     resistanceInput.setVisibility(View.VISIBLE);
                     resistanceInput.setInputType(InputType.TYPE_CLASS_NUMBER);
                     currentInput.setVisibility(View.VISIBLE);
                     currentInput.setInputType(InputType.TYPE_CLASS_NUMBER);
-                }else if(option.equals("Resistencia")){
+                } else if (option.equals("Resistencia")) {
                     voltageInput.setVisibility(View.VISIBLE);
                     voltageInput.setInputType(InputType.TYPE_CLASS_NUMBER);
                     resistanceInput.setVisibility(View.GONE);
                     currentInput.setVisibility(View.VISIBLE);
                     currentInput.setInputType(InputType.TYPE_CLASS_NUMBER);
-                }else if(option.equals("Corriente")){
+                } else if (option.equals("Corriente")) {
                     voltageInput.setVisibility(View.VISIBLE);
                     voltageInput.setInputType(InputType.TYPE_CLASS_NUMBER);
                     resistanceInput.setVisibility(View.VISIBLE);
@@ -124,8 +125,10 @@ public class OhmsLawFragment extends Fragment {
                     currentInput.setVisibility(View.GONE);
                 }
             }
+
             @Override
-            public void onNothingSelected(AdapterView<?> parent) { }
+            public void onNothingSelected(AdapterView<?> parent) {
+            }
         });
         calculateButton.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -135,14 +138,14 @@ public class OhmsLawFragment extends Fragment {
                 String convertedI = currentInput.getText().toString();
                 String convertedV = voltageInput.getText().toString();
                 AlertDialog.Builder builder = new AlertDialog.Builder(getContext());
-                
-                switch(option){
+
+                switch (option) {
                     case "Voltaje":
                         try {
                             resistance = Double.parseDouble(convertedR);
                             current = Double.parseDouble(convertedI);
                             result = voltageCalc(current, resistance);
-                            convertedResult = Math.round(result * 100.0)/100.0;
+                            convertedResult = Math.round(result * 100.0) / 100.0;
                             builder.setTitle("Resultado");
                             builder.setMessage("El voltaje es: " + convertedResult + " volt");
                             builder.setPositiveButton("OK", new DialogInterface.OnClickListener() {
@@ -153,47 +156,46 @@ public class OhmsLawFragment extends Fragment {
                             });
                             builder.show();
                         } catch (Exception e) {
-                           builder.setTitle("Error");
-                           builder.setMessage("Todos los valores deben ser ingresados según se explican en la Ley de Ohm");
-                           builder.setNegativeButton("Entendido", new DialogInterface.OnClickListener() {
-                               @Override
-                               public void onClick(DialogInterface dialog, int which) {
-                                    dialog.dismiss();
-                               }
-                           });
-                           builder.show();
+                            catchError();
                         }
-
                         break;
                     case "Resistencia":
-                        voltage = Double.parseDouble(convertedV);
-                        current = Double.parseDouble(convertedI);
-                        resistance = resistanceCalc(voltage, current);
-                        Double convertedResistance = Math.round(resistance * 100.0)/100.0;
-                        builder.setTitle("Resultado");
-                        builder.setMessage("La resistencia es: " + convertedResistance + " ohm");
-                        builder.setPositiveButton("OK", new DialogInterface.OnClickListener() {
-                            @Override
-                            public void onClick(DialogInterface dialog, int which) {
-                                dialog.dismiss();
-                            }
-                        });
-                        builder.show();
+                        try {
+                            voltage = Double.parseDouble(convertedV);
+                            current = Double.parseDouble(convertedI);
+                            resistance = resistanceCalc(voltage, current);
+                            Double convertedResistance = Math.round(resistance * 100.0) / 100.0;
+                            builder.setTitle("Resultado");
+                            builder.setMessage("La resistencia es: " + convertedResistance + " ohm");
+                            builder.setPositiveButton("OK", new DialogInterface.OnClickListener() {
+                                @Override
+                                public void onClick(DialogInterface dialog, int which) {
+                                    dialog.dismiss();
+                                }
+                            });
+                            builder.show();
+                        } catch (Exception e) {
+                            catchError();
+                        }
                         break;
                     case "Corriente":
-                        voltage = Double.parseDouble(convertedV);
-                        resistance = Double.parseDouble(convertedR);
-                        current = currentCalc(voltage, resistance);
-                        Double convertedCurrent = Math.round(current * 100.0)/100.0;
-                        builder.setTitle("Resultado");
-                        builder.setMessage("La corriente es: " + convertedCurrent + " ampere");
-                        builder.setPositiveButton("OK", new DialogInterface.OnClickListener() {
-                            @Override
-                            public void onClick(DialogInterface dialog, int which) {
-                                dialog.dismiss();
-                            }
-                        });
-                        builder.show();
+                        try {
+                            voltage = Double.parseDouble(convertedV);
+                            resistance = Double.parseDouble(convertedR);
+                            current = currentCalc(voltage, resistance);
+                            Double convertedCurrent = Math.round(current * 100.0) / 100.0;
+                            builder.setTitle("Resultado");
+                            builder.setMessage("La corriente es: " + convertedCurrent + " ampere");
+                            builder.setPositiveButton("OK", new DialogInterface.OnClickListener() {
+                                @Override
+                                public void onClick(DialogInterface dialog, int which) {
+                                    dialog.dismiss();
+                                }
+                            });
+                            builder.show(); 
+                        } catch (Exception e) {
+                            catchError();
+                        }
                         break;
                 }// end switch
             }
@@ -206,39 +208,51 @@ public class OhmsLawFragment extends Fragment {
     private Double voltageCalc(Double i, Double r) {
         this.current = i;
         this.resistance = r;
-        voltage = i*r;
+        voltage = i * r;
         return voltage;
     }
 
-    private Double currentCalc(Double v, Double r){
+    private Double currentCalc(Double v, Double r) {
         this.voltage = v;
         this.resistance = r;
-        current = v/r;
+        current = v / r;
         return current;
     }
 
-    private Double resistanceCalc(Double v, Double i){
+    private Double resistanceCalc(Double v, Double i) {
         this.voltage = v;
         this.current = i;
-        resistance = v/i;
+        resistance = v / i;
         return resistance;
     }
 
-    private Double powerCalc(int comboIndex){
-        switch (comboIndex){
+    private Double powerCalc(int comboIndex) {
+        switch (comboIndex) {
             case 0:
-                power = current*current*resistance;
+                power = current * current * resistance;
                 break;
             case 1:
-                power = (voltage*voltage)/resistance;
+                power = (voltage * voltage) / resistance;
                 break;
             case 2:
-                power = voltage*current;
+                power = voltage * current;
                 break;
         }
         return power;
     }
 
+    private void catchError() {
+        AlertDialog.Builder error = new AlertDialog.Builder(getContext());
+        error.setTitle("Error");
+        error.setMessage("Todos los valores deben ser ingresados según se explican en la Ley de Ohm");
+        error.setNegativeButton("Entendido", new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialog, int which) {
+                dialog.dismiss();
+            }
+        });
+        error.show();
+    }
 
     @Override
     public void onDestroyView() {
