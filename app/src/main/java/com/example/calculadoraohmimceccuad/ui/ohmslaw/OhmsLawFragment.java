@@ -135,22 +135,35 @@ public class OhmsLawFragment extends Fragment {
                 String convertedI = currentInput.getText().toString();
                 String convertedV = voltageInput.getText().toString();
                 AlertDialog.Builder builder = new AlertDialog.Builder(getContext());
+                
                 switch(option){
                     case "Voltaje":
-                        resistance = Double.parseDouble(convertedR);
-                        current = Double.parseDouble(convertedI);
-                        
-                        result = voltageCalc(current, resistance);
-                        convertedResult = Math.round(result * 100.0)/100.0;
-                        builder.setTitle("Resultado");
-                        builder.setMessage("El voltaje es: " + convertedResult + " volt");
-                        builder.setPositiveButton("OK", new DialogInterface.OnClickListener() {
-                            @Override
-                            public void onClick(DialogInterface dialog, int which) {
-                                dialog.dismiss();
-                            }
-                        });
-                        builder.show();
+                        try {
+                            resistance = Double.parseDouble(convertedR);
+                            current = Double.parseDouble(convertedI);
+                            result = voltageCalc(current, resistance);
+                            convertedResult = Math.round(result * 100.0)/100.0;
+                            builder.setTitle("Resultado");
+                            builder.setMessage("El voltaje es: " + convertedResult + " volt");
+                            builder.setPositiveButton("OK", new DialogInterface.OnClickListener() {
+                                @Override
+                                public void onClick(DialogInterface dialog, int which) {
+                                    dialog.dismiss();
+                                }
+                            });
+                            builder.show();
+                        } catch (Exception e) {
+                           builder.setTitle("Error");
+                           builder.setMessage("Todos los valores deben ser ingresados según se explican en la Ley de Ohm");
+                           builder.setNegativeButton("Entendido", new DialogInterface.OnClickListener() {
+                               @Override
+                               public void onClick(DialogInterface dialog, int which) {
+                                    dialog.dismiss();
+                               }
+                           });
+                           builder.show();
+                        }
+
                         break;
                     case "Resistencia":
                         voltage = Double.parseDouble(convertedV);
