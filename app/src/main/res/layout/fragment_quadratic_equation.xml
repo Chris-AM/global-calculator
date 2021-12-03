@@ -6,12 +6,28 @@
     android:layout_height="match_parent"
     tools:context=".ui.quadraticEquation.QuadraticEquationFragment">
 
+    <ImageView
+        android:id="@+id/img_quadratic_equation"
+        android:layout_width="360dp"
+        android:layout_height="100dp"
+        android:src="@drawable/quadratic_equation"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.079" />
 
-    <TextView
+    <EditText
         android:id="@+id/txt_a_input"
         android:layout_width="170dp"
         android:layout_height="40dp"
-        android:text="TextView"
+        android:background="@drawable/global_custom_input"
+        android:ems="10"
+        android:gravity="center"
+        android:hint="@string/hint_a_input"
+        android:inputType="number"
+        android:textSize="14sp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.165"
@@ -19,27 +35,84 @@
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.369" />
 
-    <TextView
+    <ImageView
+        android:id="@+id/img_x_square"
+        android:layout_width="100dp"
+        android:layout_height="40dp"
+        android:src="@drawable/x2"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/txt_a_input"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.369" />
+
+    <ImageView
+        android:id="@+id/img_x_alone"
+        android:layout_width="62dp"
+        android:layout_height="46dp"
+        android:src="@drawable/x_alone"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.503"
+        app:layout_constraintStart_toEndOf="@+id/txt_b_input"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.486" />
+
+    <ImageView
+        android:id="@+id/img_c_alone"
+        android:layout_width="62dp"
+        android:layout_height="46dp"
+        android:src="@drawable/c_alone"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.503"
+        app:layout_constraintStart_toEndOf="@+id/txt_c_input"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.582" />
+
+    <EditText
         android:id="@+id/txt_b_input"
         android:layout_width="170dp"
         android:layout_height="40dp"
-        android:text="TextView"
+        android:background="@drawable/global_custom_input"
+        android:ems="10"
+        android:gravity="center"
+        android:hint="@string/hint_b_input"
+        android:inputType="number"
+        android:textSize="14sp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.165"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.471" />
+        app:layout_constraintVertical_bias="0.481" />
 
-    <TextView
+    <EditText
         android:id="@+id/txt_c_input"
         android:layout_width="170dp"
         android:layout_height="40dp"
-        android:text="TextView"
+        android:background="@drawable/global_custom_input"
+        android:ems="10"
+        android:gravity="center"
+        android:hint="@string/hint_c_input"
+        android:inputType="number"
+        android:textSize="14sp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.165"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.573" />
+        app:layout_constraintVertical_bias="0.577" />
+
+    <Button
+        android:id="@+id/btn_calc_quadratic_equation"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/btn_global_calculate"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.514"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.743" />
 </androidx.constraintlayout.widget.ConstraintLayout>
