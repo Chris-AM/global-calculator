@@ -23,6 +23,16 @@
     <string name="hint_current_input">Corriente</string>
     <string name="hint_power_input">Potencia</string>
 
+    <!-- quadratic equation -->
+    <string name="hint_a_input">a</string>
+    <string name="hint_b_input">b</string>
+    <string name="hint_c_input">c</string>
+    <string name="hint_x2_input">xˆ2</string>
+    <string name="hint_x_input">x</string>
+
+
     <string name="btn_global_calculate">Calular</string>
+
+    <!-- colors -->
     <color name="bckg_header_title">#b56cf5</color>
 </resources>

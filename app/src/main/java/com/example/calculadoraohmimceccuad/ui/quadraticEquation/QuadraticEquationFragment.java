@@ -24,7 +24,6 @@ public class QuadraticEquationFragment extends Fragment {
         binding = FragmentQuadraticEquationBinding.inflate(inflater, container, false);
         View root = binding.getRoot();
 
-        final TextView textView = binding.textGallery;
 
         return root;
     }
