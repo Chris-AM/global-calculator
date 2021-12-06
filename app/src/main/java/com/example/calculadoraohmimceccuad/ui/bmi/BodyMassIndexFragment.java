@@ -1,30 +1,21 @@
 package com.example.calculadoraohmimceccuad.ui.bmi;
 
 import androidx.appcompat.app.AlertDialog;
-import androidx.appcompat.app.AppCompatActivity;
-import androidx.lifecycle.Observer;
-import androidx.lifecycle.ViewModelProvider;
 
 import android.content.DialogInterface;
 import android.os.Bundle;
 
 import androidx.annotation.NonNull;
-import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 
-import android.text.Editable;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
-import android.widget.EditText;
 import android.widget.TextView;
 
 import com.example.calculadoraohmimceccuad.R;
 import com.example.calculadoraohmimceccuad.databinding.FragmentBodyMassIndexBinding;
-import com.example.calculadoraohmimceccuad.databinding.FragmentHomeBinding;
-import com.example.calculadoraohmimceccuad.databinding.FragmentQuadraticEquationBinding;
-import com.example.calculadoraohmimceccuad.ui.home.HomeViewModel;
 
 public class BodyMassIndexFragment extends Fragment {
 
