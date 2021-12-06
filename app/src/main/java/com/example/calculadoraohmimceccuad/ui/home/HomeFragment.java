@@ -25,10 +25,6 @@ public class HomeFragment extends Fragment {
         binding = FragmentHomeBinding.inflate(inflater, container, false);
         View root = binding.getRoot();
 
-        final Button bmi = root.findViewById(R.id.bmi_button);
-        final Button ohms = root.findViewById(R.id.ohms_law_button);
-        final Button eqQuad = root.findViewById(R.id.quad_ec_button);
-
         return root;
     }
 
