@@ -12,6 +12,9 @@
     <string name="menu_ohmLaw">Calculadora de ley de Ohm</string>
     <string name="menu_bmi">Calculadora IMC</string>
 
+    <!-- home view -->
+    <string name="welcome">Bienvenid@ a la calculadora de Ley de Ohm, IMC y Ecuaciones Cuadráticas.</string>
+    <string name="welcome_message">Pincha en una de las imágenes o en el menú de la esquina superior derecha para acceder a cualquiera de las calculadoras.</string>
     <!-- bmi view -->.
     <string name="hint_weight_input">Ingrese el peso</string>
     <string name="hint_height_input">Ingrese la altura en metros (m.cc)</string>
