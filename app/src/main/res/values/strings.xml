@@ -31,7 +31,7 @@
     <string name="hint_x_input">x</string>
 
 
-    <string name="btn_global_calculate">Calular</string>
+    <string name="btn_global_calculate">Calcular</string>
 
     <!-- colors -->
     <color name="bckg_header_title">#b56cf5</color>
